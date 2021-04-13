@@ -20,15 +20,13 @@ class Model
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @Groups("model:read")
+     * @Groups({"model:read", "advert:read", "brand:read"})
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @Groups("model:read")
-     * @Groups("model:write")
-     * @Groups("advert:read")
+     * @Groups({"model:read", "model:write", "advert:read", "brand:read"})
      * @ORM\Column(type="string", length=128)
      */
     private $name;
@@ -42,8 +40,7 @@ class Model
     /**
      * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="models")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups("model:write")
-     * @Groups("model:read")
+     * @Groups({"model:write", "model:read", "advert:read"})
      */
     private $brand;
 

@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\AdvertRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,14 +23,17 @@ class Advert
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @Groups("advert:read")
      * @ORM\Column(type="integer")
+     * @Groups({"advert:read", "garage:read", "model:read", "photo:read"})
      */
     private $id;
 
     /**
      * @Groups("advert:read")
      * @Groups("advert:write")
+     * @Groups("garage:read")
+     * @Groups("model:read")
+     * @Groups("photo:read")
      * @ORM\Column(type="string", length=128)
      */
     private $title;
@@ -35,6 +41,9 @@ class Advert
     /**
      * @Groups("advert:read")
      * @Groups("advert:write")
+     * @Groups("garage:read")
+     * @Groups("model:read")
+     * @Groups("photo:read")
      * @ORM\Column(type="string", length=600)
      */
     private $description;
@@ -68,7 +77,7 @@ class Advert
     private $gearBox;
 
     /**
-     * @Groups("advert:read")
+     * @Groups({"advert:read", "advert:read"})
      * @ORM\Column(type="datetime")
      */
     private $released_at;
@@ -83,19 +92,21 @@ class Advert
     /**
      * @ORM\ManyToOne(targetEntity=Garage::class, inversedBy="advert")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups("advert:write")
+     * @Groups({"advert:write", "advert:read"})
      */
     private $garage;
 
     /**
      * @ORM\ManyToOne(targetEntity=Model::class, inversedBy="adverts")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups("advert:write")
+     * @Groups({"advert:write", "advert:read"})
      */
     private $model;
 
     /**
      * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="photos")
+     * @ApiSubresource
+     * @Groups({"advert:read", "advert:write"})
      */
     private $photos;
 

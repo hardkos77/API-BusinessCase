@@ -22,14 +22,13 @@ class User implements UserInterface
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @Groups("user:read")
      * @ORM\Column(type="integer")
+     * @Groups({"user:read", "garage:read"})
      */
     private $id;
 
     /**
-     * @Groups("user:read")
-     * @Groups("user:write")
+     * @Groups({"user:read", "user:write", "garage:read"})
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -47,36 +46,32 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @var string
      * @Groups("user:write")
-     *
      * @SerializedName("password")
      */
     private $plainPassword;
 
     /**
-     * @Groups("user:read")
-     * @Groups("user:write")
+     * @Groups({"user:read", "user:write", "garage:read"})
      * @ORM\Column(type="string", length=50)
      */
     private $firstName;
 
     /**
-     * @Groups("user:read")
-     * @Groups("user:write")
+     * @Groups({"user:read", "user:write", "garage:read"})
      * @ORM\Column(type="string", length=50)
      */
     private $lastName;
 
     /**
-     * @Groups("user:read")
-     * @Groups("user:write")
+     * @Groups({"user:read", "user:read"})
      * @ORM\Column(type="string", length=14)
      */
     private $siret;
 
     /**
-     * @Groups("user:read")
-     * @Groups("user:write")
+     * @Groups({"user:read", "user:read"})
      * @ORM\Column(type="string", length=16)
      */
     private $phone;

@@ -24,43 +24,37 @@ class Contact
     private $id;
 
     /**
-     * @Groups("contact:read")
-     * @Groups("contact:write")
+     * @Groups({"contact:read", "contact:write"})
      * @ORM\Column(type="string", length=50)
      */
     private $firstName;
 
     /**
-     * @Groups("contact:read")
-     * @Groups("contact:write")
+     * @Groups({"contact:read", "contact:write"})
      * @ORM\Column(type="string", length=50)
      */
     private $lastName;
 
     /**
-     * @Groups("contact:read")
-     * @Groups("contact:write")
+     * @Groups({"contact:read", "contact:write"})
      * @ORM\Column(type="string", length=100)
      */
     private $mail;
 
     /**
-     * @Groups("contact:read")
-     * @Groups("contact:write")
+     * @Groups({"contact:read", "contact:write"})
      * @ORM\Column(type="string", length=20)
      */
     private $phone;
 
     /**
-     * @Groups("contact:read")
-     * @Groups("contact:write")
+     * @Groups({"contact:read", "contact:write"})
      * @ORM\Column(type="string", length=10)
      */
     private $reference;
 
     /**
-     * @Groups("contact:read")
-     * @Groups("contact:write")
+     * @Groups({"contact:read", "contact:write"})
      * @ORM\Column(type="string", length=600)
      */
     private $message;

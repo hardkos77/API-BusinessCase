@@ -20,23 +20,22 @@ class Brand
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @Groups("brand:read")
      * @ORM\Column(type="integer")
+     * @Groups({"brand:read", "advert:read", "model:read", "model:write"})
      */
     private $id;
 
     /**
-     * @Groups("brand:read")
-     * @Groups("brand:write")
-     * @Groups("model:read")
      * @ORM\Column(type="string", length=50)
+     * @Groups({"brand:read", "brand:write"})
+     * @Groups({"model:read", "model:write"})
+     * @Groups("advert:read")
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Model::class, mappedBy="brand")
+     * @ORM\OneToMany(targetEntity=Model::class, mappedBy="brand", orphanRemoval=true)
      * @Groups("brand:read")
-     * @Groups("brand:write")
      */
     private $models;
 

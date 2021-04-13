@@ -20,42 +20,37 @@ class Garage
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @Groups("garage:read")
+     * @Groups({"garage:read", "advert:read", "user:read"})
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @Groups("garage:read")
-     * @Groups("garage:write")
+     * @Groups({"garage:read", "garage:write"})
      * @ORM\Column(type="string", length=255)
      */
     private $street;
 
     /**
-     * @Groups("garage:read")
-     * @Groups("garage:write")
+     * @Groups({"garage:read", "garage:write"})
      * @ORM\Column(type="string", length=10)
      */
     private $zipCode;
 
     /**
-     * @Groups("garage:read")
-     * @Groups("garage:write")
+     * @Groups({"garage:read", "garage:write"})
      * @ORM\Column(type="string", length=64)
      */
     private $city;
 
     /**
-     * @Groups("garage:read")
-     * @Groups("garage:write")
+     * @Groups({"garage:read", "garage:write"})
      * @ORM\Column(type="string", length=16)
      */
     private $phone;
 
     /**
-     * @Groups("garage:read")
-     * @Groups("garage:write")
+     * @Groups({"garage:read", "garage:write", "advert:read", "user:read"})
      * @ORM\Column(type="string", length=50)
      */
     private $name;

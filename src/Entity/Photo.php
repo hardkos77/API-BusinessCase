@@ -20,7 +20,7 @@ class Photo
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"picture:read", "ad:read", "ad:write"})
+     * @Groups({"picture:read", "advert:read", "advert:write"})
      */
     private $id;
 
@@ -31,7 +31,7 @@ class Photo
     private $url;
 
     /**
-     * @ORM\Column(type="smallint")
+     *@ORM\Column(type="smallint")
      *@Groups({"photo:read", "photo:write", "advert:read", "advert:write"})
      */
     private $sortOrder;
